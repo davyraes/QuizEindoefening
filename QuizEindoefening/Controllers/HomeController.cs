@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using QuizEindoefening.Models.Quiz;
 
 namespace QuizEindoefening.Controllers
 {
@@ -10,7 +11,11 @@ namespace QuizEindoefening.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (var context = new QuizContext())
+            {
+                context.SaveChanges();
+            }
+                return View();
         }
 
         public ActionResult About()
